@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF">
+        <title>To Do List</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+        <form id="editForm">
+            <label for="item_input_name"><h2>Item Name</h2></label>
+            <input id="edit_input_name" type="text">
+
+            <label for="item_input_description"><h2>Item Descriptions</h2></label>
+            <input id="edit_input_description" type="text">
+
+            <input type="submit" value="SAVE" id="save_btn">
+        </form>
+
+    <body>
+        <h1>To Do List:</h1>
+        <!-- Put our trails here -->
+
+        <div id="todo_items">
+
+        </div>
+        <form id="createForm">
+            <label for="item_input_name">Item Name</label>
+            <input id="item_input_name" type="text">
+
+            <label for="item_input_description">Item Descriptions</label>
+            <input id="item_input_description" type="text">
+
+            <input type="submit" value="+" id="submit_btn">
+        </form>
+        
+        <script src="app.js"></script>
+    </body>
+</html>
