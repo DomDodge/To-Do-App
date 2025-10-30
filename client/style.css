@@ -57,6 +57,13 @@ form {
     height: 80px;
 }
 
+#loginForm {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 400px;
+}
+
 #editForm {
     position: fixed;               
     top: 50%;                      
@@ -74,6 +81,12 @@ form {
     visibility: hidden;
     width: 50vw;
     height: 50vh;            
+}
+
+#username, #password {
+    width: 60%;
+    height: 25px;
+    border: 2px solid black;
 }
 
 /* Optional: fade-in effect when shown */

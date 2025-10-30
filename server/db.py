@@ -42,6 +42,12 @@ class DB:
         self.cursor.execute("UPDATE items SET name=?, description=? WHERE id = ?;", data)
         self.connection.commit()
 
+    def createUser(self, data):
+        pass
+
+    def login(self, data):
+        pass
+
     def close(self):
         self.connection.close()
 

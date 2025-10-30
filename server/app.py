@@ -49,6 +49,31 @@ def editItem(id):
     return "Edited", "200", {"Access-Control-Allow-Origin":"*"}
 
 
+# LOGIN HANDLERS
+
+@app.route("/login", methods=['POST'])
+def loginUser():
+    db = DB("items.db")
+    print(request.form)
+    # items.append(request.form['name'])
+    d = {'username' : request.form['username'],
+         'password' : request.form['password'],
+         }
+    db.login(d)
+    return "Created", "201", {"Access-Control-Allow-Origin":"*"}
+
+@app.route("/users", methods=['POST'])
+def signUpUser():
+    db = DB("items.db")
+    print(request.form)
+    # items.append(request.form['name'])
+    d = {'username' : request.form['username'],
+         'password' : request.form['password'],
+         }
+    db.createUser(d)
+    return "Created", "201", {"Access-Control-Allow-Origin":"*"}
+
+
 def main():
     app.run()
     
