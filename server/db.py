@@ -1,4 +1,5 @@
 import sqlite3
+from passlib.hash import bcrypt
 
 def dict_factory(cursor, row):
     fields = []
@@ -43,10 +44,15 @@ class DB:
         self.connection.commit()
 
     def createUser(self, data):
-        pass
+        plain_pass = data["password"]
+        encrypted = bcrypt.hash(plain_pass)
+        d = [data['username'], encrypted]
+        self.cursor.execute("INSERT INTO users (username, password) VALUES (?, ?);", d)
+        self.connection.commit()
 
-    def login(self, data):
-        pass
+    def login(self, username):
+        self.cursor.execute("SELECT * FROM users where username = ?", username)
+        self.connection.close()
 
     def close(self):
         self.connection.close()
