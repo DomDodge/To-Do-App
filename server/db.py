@@ -1,6 +1,7 @@
 import sqlite3
 from passlib.hash import bcrypt
 
+
 def dict_factory(cursor, row):
     fields = []
     # Extract column names from cursor description
@@ -50,13 +51,19 @@ class DB:
         self.cursor.execute("INSERT INTO users (username, password) VALUES (?, ?);", d)
         self.connection.commit()
 
-    def login(self, username):
+    def userExists(self, username):
         self.cursor.execute("SELECT * FROM users where username = ?", username)
         self.connection.close()
+
+    def login(self, username):
+        pass
 
     def close(self):
         self.connection.close()
 
 if __name__ == "__main__":
-    db = DB('items.db')
-    print(db.readAllRecords())
+    import bcrypt as bc
+    from passlib.hash import bcrypt
+
+    print("bcrypt version:", getattr(bc, "__version__", "no __version__ attr"))
+    print("passlib bcrypt version:", bcrypt)

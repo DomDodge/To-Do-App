@@ -70,7 +70,8 @@ def signUpUser():
     d = {'username' : request.form['username'],
          'password' : request.form['password'],
          }
-    db.createUser(d)
+    if not db.userExists(request.form['username']):
+        db.createUser(d)
     return "Created", "201", {"Access-Control-Allow-Origin":"*"}
 
 
