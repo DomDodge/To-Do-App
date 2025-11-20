@@ -3,11 +3,13 @@ const editForm = document.getElementById("editForm");
 let editName = document.getElementById("edit_input_name");
 let editDesc = document.getElementById("edit_input_description");
 
+let url = "http://127.0.0.1:5000";
+
 function load() {
     // Blank out div
     todo.innerHTML = '';
     // Refill 
-    fetch("http://127.0.0.1:5000/items")
+    fetch(url + "/items")
     .then(function(response) {
         response.json()
         .then(function(data) {
@@ -68,7 +70,7 @@ function finishEdit(id, n, desc) {
     let data = "name=" + encodeURIComponent(n);
     data += "&description=" + encodeURIComponent(desc);
 
-    fetch("http://127.0.0.1:5000/items/" + id, {
+    fetch(url + "/items/" + id, {
         method: "PUT",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -84,7 +86,7 @@ function finishEdit(id, n, desc) {
 }
 
 function deleteItem(id) {
-    fetch("http://127.0.0.1:5000/items/"+id, {
+    fetch(url + "/items/"+id, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -102,7 +104,7 @@ function addNewItem() {
     data += "&description=" + encodeURIComponent(description);
 
     // Send to API
-    fetch("http://127.0.0.1:5000/items", {
+    fetch(url + "/items", {
         method: "POST",
         body: data,
         headers: {

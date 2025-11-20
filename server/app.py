@@ -50,6 +50,6 @@ def editItem(id):
 
 
 def main():
-    app.run()
+    app.run(host='0.0.0.0')
     
 main()
